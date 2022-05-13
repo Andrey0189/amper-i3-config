@@ -1,0 +1,23 @@
+set $wallpaper ./deltarune.gif
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-tray
+
+# Xscreensaver
+exec --no-startup-id xscreensaver --no-splash
+
+# setting up GIF wallpaper
+exec --no-startup-id xwinwrap -ni -b -fs -ov -nf -debug -- gifview -w WID $wallpaper -a
+
+# setting up static wallpaper
+# exec --no-startup-id feh --bg-scale $wallpaper
+
+# compton
+exec --no-startup-id compton -b --vsync --experimental-backends
+
+# Lang switcher
+exec --no-startup-id setxkbmap us,ru -option 'grp:alt_shift_toggle'

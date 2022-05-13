@@ -1,0 +1,49 @@
+# My i3 config file
+# run i3-config-wizard to load the default config
+# See https://i3wm.org/docs/userguide.html for a complete reference
+
+# Setting mod key to the "Start" or "Meta" or "Win"
+set $mod Mod4
+
+# Main font
+font pango:JetBrains Mono Bold 10
+
+# Autostart
+include $HOME/.config/i3/autostart
+
+# Keybinds for window managing
+include $HOME/.config/i3/window-keybinds
+
+# Other useful keybinds
+include $HOME/.config/i3/keybinds
+
+# Workspaces configuration
+include $HOME/.config/i3/workspaces
+
+# Rules for windows
+include $HOME/.config/i3/window-rules
+
+# i3bar configuration
+include $HOME/.config/i3/bar
+
+# Colors for borders, fonts, etc.
+include $HOME/.config/i3/colors
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# window title text align
+title_align center
+
+# hiding edge borders
+hide_edge_borders smart
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill

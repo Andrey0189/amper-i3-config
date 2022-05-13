@@ -1,0 +1,4 @@
+# changing default floating size for all Firefox windows
+# for_window [class="firefox"] floating_minimum_size 1280 x 720
+for_window [class="mpv"] floating enable
+for_window [class=".*"] border pixel 2

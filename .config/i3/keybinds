@@ -1,0 +1,45 @@
+# start a terminal
+bindsym $mod+Return exec $TERM
+
+# A more modern dmenu replacement
+bindsym $mod+d exec --no-startup-id rofi -show drun -run-shell-command '$TERM -e bash -ic "{cmd} && read"' -icon-theme "Papirus" -show-icons -font "JetBrains Mono Bold 12"
+
+# take screenshot
+bindsym Print exec flameshot gui
+
+# Using pamixer to adjust volume in PulseAudio.
+set $vol-sig pkill -SIGRTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 3 && $vol-sig
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 3 && $vol-sig
+bindsym XF86AudioMute exec --no-startup-id pamixer -t && $vol-sig
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Brightness
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
+# Screen lock
+bindsym $mod+l exec xscreensaver-command --lock 
+
+# Send signals to i3blocks to change the flag
+bindsym Shift+Alt_L exec pkill -SIGRTMIN+2 i3blocks
+bindsym Alt_L+Shift exec pkill -SIGRTMIN+2 i3blocks
+
+
+# Power management
+set $Locker i3lock && sleep 1
+set $mode_system System (l) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    # bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym l exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id poweroff -i, mode "default"
+
+    # выход: Enter или Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+y mode "$mode_system"
