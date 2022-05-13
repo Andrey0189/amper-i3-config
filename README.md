@@ -23,7 +23,7 @@ Sample screenshots:
 
 ## Installation
 ```
-$ git clone amper-i3-config
+$ git clone https://github.com/Andrey0189/amper-i3-config
 $ cd amper-i3-config
 $ sudo chmod +x ./install.sh
 $ ./install.sh
