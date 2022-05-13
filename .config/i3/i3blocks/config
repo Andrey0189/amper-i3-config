@@ -1,1 +1,49 @@
-among us easter egg
+[WEATHER]
+command=echo "  $(sleep 10s && curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo) "
+interval=3600
+color=#C9DBE3
+
+[CPU]
+command=echo "   $(mpstat 1 1 | awk '/:  all/ {printf("%s\n", $(NF-9))}')% "
+interval=1
+color=#C9DBE3
+
+# Uncomment it if you want to know hour CPU temperature
+#[HEAT]
+#command=echo "  $(sensors | grep 'Tctl' | grep '+[0-9]*' -o) °C "
+#interval=1
+#color=#C9DBE3
+
+[RAM]
+command=free -h | awk '/Mem:/ { printf("   %5s/%s \n", $3, $2) }'
+interval=1
+color=#C9DBE3
+
+# Uncomment it if you want to know your disk usage
+# Some additions are required if you don't have separated /home partition
+#[DISK]
+#command=echo "   root:$(df -h /home | awk '/\//{ printf("%4s/%s \n", $3, $2) }')home: $(df -h / | awk '/\//{ printf("%4s/%s \n", $3, $2) }')"                                
+#interval=300
+#color=#C9E3DB
+
+[BATTERY]
+command=echo "   $(acpi -b | grep -E -o "[0-9][0-9]?[0-9]?%") "
+color=#C9E3DB
+interval=15
+
+[SOUND]
+command=echo "   $(pamixer --get-volume-human) "
+interval=once
+signal=1
+color=#C9E3DB
+
+[FLAG]
+interval=once
+signal=2
+# Change the flags if you need
+command=xset -q|grep LED| awk '{ if (substr ($10,5,1) == 1) print " 🇷🇺 "; else print " 🇺🇸 "; }'
+
+[TIME_DATE]
+command=echo " $(date +" %a, %d %b - %H:%M:%S")"
+interval=1
+color=#C9E3DB
