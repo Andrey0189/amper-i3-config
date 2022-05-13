@@ -29,4 +29,4 @@ $ sudo chmod +x ./install.sh
 $ ./install.sh
 ```
 ## Tips
-* Edit `$wallpaper` var in the `./configs/autostart` file to change wallpaper
+* Edit `$wallpaper` var in the `./.config/i3/autostart` file to change wallpaper
