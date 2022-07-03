@@ -23,10 +23,10 @@ Sample screenshots:
 
 ## Installation
 ```
-$ git clone https://github.com/Andrey0189/amper-i3-config
-$ cd amper-i3-config
-$ sudo chmod +x ./install.sh
-$ ./install.sh
+git clone https://github.com/Andrey0189/amper-i3-config
+cd amper-i3-config
+sudo chmod +x ./install.sh
+./install.sh
 ```
 ## Tips
 * Edit wallpaper path in the `./.config/i3/autostart` to change wallpaper
